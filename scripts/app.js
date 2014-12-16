@@ -11,12 +11,14 @@ var CANVAS = (function ($, undefined) {
 		var currentWidth = 0,
 			currentHeight = 0,
 			canvasWidth = $("#area").width(),
-			canvasHeight = $("#area").height()
+			canvasHeight = $("#area").height(),
+			width = 0,
+			distance = 0,
 			i = 0;
 
 		while (currentWidth < canvasWidth) {
-			var width = parseInt($("#horiz_1_size").val());
-			var distance = parseInt($("#horiz_1_distance").val());
+			width = parseInt($("#horiz_1_size").val());
+			distance = parseInt($("#horiz_1_distance").val());
 			ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
 			ctx.fillRect((i * distance) + (width * i), 0, width, canvasHeight);
 			i++;
@@ -25,8 +27,8 @@ var CANVAS = (function ($, undefined) {
 
 		i = 0;
 		while (currentHeight <= canvasHeight) {
-			var width = parseInt($("#vert_1_size").val());
-			var distance = parseInt($("#vert_1_distance").val());
+			width = parseInt($("#vert_1_size").val());
+			distance = parseInt($("#vert_1_distance").val());
 			ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
 			ctx.fillRect(0, (i * distance) + (width * i), canvasWidth, width);
 			i++;
