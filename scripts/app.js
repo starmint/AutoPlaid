@@ -8,18 +8,30 @@ var CANVAS = (function ($, undefined) {
 		ctx.fillStyle = "#aaa";
 		ctx.fillRect(0, 0, $("#area").width(), $("#area").height());
 
-		// Draw lines. Only does 4 each right now. Should update to be dynamic based off size and spacing.
-		for (var i = 3; i >= 0; i--) {
-			var width = $("#vert_1_size").val();
-			var distance = $("#vert_1_distance").val();
-			ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-			ctx.fillRect(0, (i * distance) + (width * i), 100, width);
+		var currentWidth = 0,
+			currentHeight = 0,
+			canvasWidth = $("#area").width(),
+			canvasHeight = $("#area").height()
+			i = 0;
 
-			width = $("#horiz_1_size").val();
-			distance = $("#horiz_1_distance").val();
+		while (currentWidth < canvasWidth) {
+			var width = parseInt($("#horiz_1_size").val());
+			var distance = parseInt($("#horiz_1_distance").val());
 			ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-			ctx.fillRect((i * distance) + (width * i), 0, width, 100);
+			ctx.fillRect((i * distance) + (width * i), 0, width, canvasHeight);
+			i++;
+			currentWidth += distance + width;
 		};
+
+		i = 0;
+		while (currentHeight <= canvasHeight) {
+			var width = parseInt($("#vert_1_size").val());
+			var distance = parseInt($("#vert_1_distance").val());
+			ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+			ctx.fillRect(0, (i * distance) + (width * i), canvasWidth, width);
+			i++;
+			currentHeight += distance + width;
+		}
 	}
 
 	function init_form () {
