@@ -3,11 +3,21 @@ var CANVAS = (function ($) {
 	var ctx = {};
 
 	function canvas_redraw () {
+		// All this math is not good. Needs working on...
+
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		ctx.fillStyle = "green";
-		ctx.fillRect(10,10,$("#horiz_1_size").val(),100);
-		ctx.fillStyle = "red";
-		ctx.fillRect(10,10,100,$("#vert_1_size").val());
+		ctx.fillStyle = "#aaa";
+		ctx.fillRect(0, 0, $("#area").width(), $("#area").height());
+
+		for (var i = 3; i >= 0; i--) {
+			var width = $("#vert_1_size").val();
+			ctx.fillStyle = "black";
+			ctx.fillRect(10, (i * 20) + (width * i), 100, width);
+
+			width = $("#horiz_1_size").val();
+			ctx.fillStyle = "white";
+			ctx.fillRect((i * 50) + (width * i), 10, width, 100);
+		};
 	}
 
 	function init_form () {
