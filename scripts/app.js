@@ -11,10 +11,7 @@ var CANVAS = (function ($) {
 	}
 
 	function init_form () {
-		$("#horiz_1_size").change(function (event) {
-			canvas_redraw();
-		});
-		$("#vert_1_size").change(function (event) {
+		$("input").change(function (event) {
 			canvas_redraw();
 		});
 	}
