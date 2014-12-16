@@ -1,14 +1,14 @@
-var CANVAS = (function ($) {
+var CANVAS = (function ($, undefined) {
 	var canvas = {};
 	var ctx = {};
 
 	function canvas_redraw () {
-		// All this math is not good. Needs working on...
-
+		// Reset canvas
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = "#aaa";
 		ctx.fillRect(0, 0, $("#area").width(), $("#area").height());
 
+		// Draw lines. Only does 4 each right now. Should update to be dynamic based off size and spacing.
 		for (var i = 3; i >= 0; i--) {
 			var width = $("#vert_1_size").val();
 			var distance = $("#vert_1_distance").val();
